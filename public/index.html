@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Bookmark Lookup</title>
+    <link href="style.css" rel="stylesheet" type="text/css" />
+  </head>
+  <body>
+    <div class="w-full h-screen bg-gray-300 pt-32">
+        <div class="flex flex-col items-center mb-16 ">
+            <h1 class="text-gray-800 text-2xl">Welcome</h1>
+            <p class="text-gray-800 ">This is a Bookmark lookup weblet!</p>
+        </div>
+        <div class="flex justify-center">
+            <div id="input-box" class="bg-gray-100 w-full sm:w-1/2 lg:w-1/4">
+              Placeholder for all bookmarks
+            </div>
+        </div>
+
+        <div class="flex justify-center pt-20">
+
+        <select name="type-of-request" id="reqid">
+          <option selected disabled>Choose...</option>    
+          <option value="post-method">Post</option>
+          <option value="delete-method">Delete</option>
+          <option value="update-method">Update</option>
+          <option value="get-method">Get</option>
+        </select>
+
+      </div>
+    </div>
+    <script src="./js/script.js"></script>
+    <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
+  </body>
+</html>
