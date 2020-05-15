@@ -72,3 +72,10 @@ exports.PORT = process.env.PORT || '8080';
 
 //This is the URL given by Mongo
 //mongodb+srv://admin:<password>@cluster0-crivh.mongodb.net/test?retryWrites=true&w=majority
+
+
+//In Heroku CLI it is time to login to finally push the application
+//Type in the console window "heroku login" to start a new session
+//Then type "heroku create" so that Heroku creates the space for the 
+//application and a public URL (This is gonna be the URL for when the server
+//is deployed to Heroku this is the way its gonna be accesed with.)

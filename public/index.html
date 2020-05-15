@@ -13,20 +13,29 @@
             <p class="text-gray-800 ">This is a Bookmark lookup weblet!</p>
         </div>
         <div class="flex justify-center">
-            <div id="input-box" class="bg-gray-100 w-full sm:w-1/2 lg:w-1/4">
-              Placeholder for all bookmarks
+            <div id="input_box" class="bg-gray-100 w-full sm:w-1/2 lg:w-1/4">
+              
             </div>
         </div>
 
         <div class="flex justify-center pt-20">
 
-        <select name="type-of-request" id="reqid">
-          <option selected disabled>Choose...</option>    
-          <option value="post-method">Post</option>
-          <option value="delete-method">Delete</option>
-          <option value="update-method">Update</option>
-          <option value="get-method">Get</option>
+        <select class="rounded" name="type-of-request" id="reqid" onchange="showForm(this.id)">
+          <option selected="true" disabled="true">Choose...</option>    
+          <option value="post_method">Post</option>
+          <option value="delete_method">Delete</option>
+          <option value="update_method">Update</option>
+          <option value="get_method">Get</option>
+          
         </select>
+        
+
+      </div>
+      
+      <span class="flex flex-col content-between items-center pt-10" id="form_input">
+      </span>
+
+      <div class="results">
 
       </div>
     </div>

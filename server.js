@@ -1,5 +1,6 @@
 console.log("OK! Server's up!");
-
+const validateKey = require('./middleware/validateToken');
+const cors = require( './middleware/cors' );
 //Newest revision
 //Add a config.js file to hide stuff from the user
 
@@ -14,7 +15,8 @@ const {uuid} = require('uuidv4');
 const {DATABASE_URL, PORT} = require('./config');
 
 //Adding a dependency for the validation token
-const validateKey = require('./middleware/validateToken');
+
+
 
 //Require mongoose to be able to CONNECT to the database itself
 const mongoose = require ('mongoose');
@@ -37,7 +39,7 @@ const jsonParser = bodyParser.json();
 //Start dependencies
 const bookMApp = express();
 bookMApp.use(morgan('dev'));
-
+bookMApp.use( cors );
 
 
 //Indicate the script to make the endpoints always use the validateKey middleware
