@@ -149,8 +149,8 @@ function init(){
 
 init();
 
-//function watchFormGlobal()
-//}
 
+
+//function watchFormGlobal()
 //1st method - run event listener directly when appending
 //Below this line initialize the query selector

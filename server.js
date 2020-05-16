@@ -1,30 +1,20 @@
 console.log("OK! Server's up!");
-const validateKey = require('./middleware/validateToken');
-const cors = require( './middleware/cors' );
-//Newest revision
-//Add a config.js file to hide stuff from the user
-
-
+const cors = require('./middleware/cors');
+//API KEY on record
+const API_TOKEN = "2abbf7c3-245b-404f-9473-ade729ed4653"
 //Require the following dependencies
 const express = require('express');
 const bodyParser = require('body-parser');
 const morgan = require('morgan');
 const {uuid} = require('uuidv4');
-
-//Adding a dependency for the "hidden" config.js
 const {DATABASE_URL, PORT} = require('./config');
-
-//Adding a dependency for the validation token
-
-
-const API_TOKEN = '2abbf7c3-245b-404f-9473-ade729ed4653';
-
 //Require mongoose to be able to CONNECT to the database itself
 const mongoose = require ('mongoose');
 
 //IMPORT the created object in bookmarksModel so that it can interact with the endpoints
 //No need to add the .js extension as it is a package
 const {Bookmarks} = require ('./models/bookmarksModel');
+
 const jsonParser = bodyParser.json();
 
 //Bookmark structure!
@@ -40,8 +30,27 @@ const jsonParser = bodyParser.json();
 //Start dependencies
 const bookMApp = express();
 bookMApp.use(morgan('dev'));
-bookMApp.use( cors );
+bookMApp.use(cors);
 
+//Define Middleware for authentification checks
+function validateKey(req, res, next){
+    let token = req.headers.authorization;
+
+    //Prevent further access if no API KEY was provided
+    if(!token){
+        res.statusMessage = "No API KEY found in header/bearer";
+        return res.status(401).end();
+    }
+
+    //Prevent further access if the API KEY provided doesn't match to the one on records
+    if(token !== `Bearer ${API_TOKEN}`){
+        res.statusMessage = "The API KEY you provided doesn't match to my records";
+        return res.status(401).end();
+    }
+
+    //Place next() otherwise the server will indefinitely be stuck on this function
+    next();
+}
 
 //Indicate the script to make the endpoints always use the validateKey middleware
 bookMApp.use(validateKey);
