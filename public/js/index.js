@@ -14,8 +14,8 @@ function GetBookmarkFetch(bmTitle)
         }
     }
 
-    let receivedBMS = document.querySelector('#input_box');
-    receivedBMS.innerHTML = "";
+    let results = document.querySelector('.results')
+    results.innerHTML = "";
 
     fetch(url, settings)
         .then(response => {
@@ -27,16 +27,16 @@ function GetBookmarkFetch(bmTitle)
         .then(responseJSON => {
             for(let i = 0; i < responseJSON.length; i++)
             {
-                receivedBMS.innerHTML += `<h2>Bookmark ID<h2>`
-                receivedBMS.innerHTML += `<div> ${responseJSON[i].id} </div>`;
-                receivedBMS.innerHTML += `<h2>Bookmark Title<h2>`
-                receivedBMS.innerHTML += `<div> ${responseJSON[i].title} </div>`;
-                receivedBMS.innerHTML += `<h2>Bookmark Description<h2>`
-                receivedBMS.innerHTML += `<div> ${responseJSON[i].description} </div>`;
-                receivedBMS.innerHTML += `<h2>Bookmark URL<h2>`
-                receivedBMS.innerHTML += `<div> ${responseJSON[i].url} </div>`;
-                receivedBMS.innerHTML += `<h2>Bookmark Rating<h2>`
-                receivedBMS.innerHTML += `<div> ${responseJSON[i].rating} </div>`;
+                results.innerHTML += `<h2>Bookmark ID<h2>`
+                results.innerHTML += `<div> ${responseJSON[i].id} </div>`;
+                results.innerHTML += `<h2>Bookmark Title<h2>`
+                results.innerHTML += `<div> ${responseJSON[i].title} </div>`;
+                results.innerHTML += `<h2>Bookmark Description<h2>`
+                results.innerHTML += `<div> ${responseJSON[i].description} </div>`;
+                results.innerHTML += `<h2>Bookmark URL<h2>`
+                results.innerHTML += `<div> ${responseJSON[i].url} </div>`;
+                results.innerHTML += `<h2>Bookmark Rating<h2>`
+                results.innerHTML += `<div> ${responseJSON[i].rating} </div>`;
             }
 
         })
