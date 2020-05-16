@@ -1,10 +1,53 @@
+import { response } from "express";
+
 const API_TOKEN = '2abbf7c3-245b-404f-9473-ade729ed4653';
 
-//Not working
+
+function GetBookmarkFetch(bmTitle)
+{
+    let url = '/bookmarks';
+
+    let settings = {
+        method : 'GET',
+        headers : {
+            Authorization : `Bearer ${API_TOKEN}`
+        }
+    }
+
+    let receivedBMS = document.querySelector('#input_box');
+    receivedBMS.innerHTML = "";
+
+    fetch(url, settings)
+        .then(response => {
+            if(response.ok){
+                return response.json();
+            }
+            throw new Error(response.statusText);
+        })
+        .then(responseJSON => {
+            for(let i = 0; i < responseJSON.length; i++)
+            {
+                receivedBMS.innerHTML += `<h2>Bookmark ID<h2>`
+                receivedBMS.innerHTML += `<div> ${responseJSON[i].id} </div>`;
+                receivedBMS.innerHTML += `<h2>Bookmark Title<h2>`
+                receivedBMS.innerHTML += `<div> ${responseJSON[i].title} </div>`;
+                receivedBMS.innerHTML += `<h2>Bookmark Description<h2>`
+                receivedBMS.innerHTML += `<div> ${responseJSON[i].description} </div>`;
+                receivedBMS.innerHTML += `<h2>Bookmark URL<h2>`
+                receivedBMS.innerHTML += `<div> ${responseJSON[i].url} </div>`;
+                receivedBMS.innerHTML += `<h2>Bookmark Rating<h2>`
+                receivedBMS.innerHTML += `<div> ${responseJSON[i].rating} </div>`;
+            }
+
+        })
+        .catch( err => {
+            results.innerHTML = `<div> ${err.message} </div>`;
+        });
+}
+
 function UpdateBookmarkFetch(bmID, bmTitle, bmDescription, bmURL, bmRating)
 {
     let url = `/api/bookmarks/${bmID}`;
-
     let data = {
         title : bmTitle,
         description : bmDescription,
@@ -31,7 +74,6 @@ function UpdateBookmarkFetch(bmID, bmTitle, bmDescription, bmURL, bmRating)
         .catch( err => {
             results.innerHTML = `<div> ${err.message} </div>`;
         });
-
 }
 
 //DELETE OK!
@@ -161,6 +203,10 @@ function showForm(sel){
             Update an existing bookmark
             </h1>
             <div class="space-y-1">
+            <label>Bookmark ID</label><br>
+            <input class="rounded" class="class="rounded"" type="text" id=bm_id>
+            </div>
+            <div class="space-y-1">
             <label>Bookmark Title</label><br>
             <input class="rounded" class="class="rounded"" type="text" id=bm_title>
             </div>
@@ -182,6 +228,7 @@ function showForm(sel){
         let submitBoton = document.querySelector('.submit-button-bookmark');
         submitBoton.addEventListener('click', (event) =>{
             event.preventDefault();
+            let bmID = bm_id.value;
             let bmTitle = bm_title.value;
             let bmDescription = bm_description.value;
             let bmURL = bm_url.value;
@@ -198,11 +245,17 @@ function showForm(sel){
             </h1>
             <div class="space-y-1">
             <label>Bookmark Title</label><br>
-            <input class="rounded" class="class="rounded"" type="text" id=bm_id>
+            <input class="rounded" class="class="rounded"" type="text" id=bm_title>
             </div>
             <button class="submit-button-bookmark bg-gray-700 text-white rounded p-3" type="submit">Delete this bookmark</button>
         </form>  
         `
+        let submitBoton = document.querySelector('.submit-button-bookmark');
+        submitBoton.addEventListener('click', (event) =>{
+            event.preventDefault();
+            let bmTitle = bm_title.value;
+            GetBookmarkFetch(bmTitle);
+        });
     }
 }
 
