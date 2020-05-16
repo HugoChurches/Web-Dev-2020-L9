@@ -1,4 +1,5 @@
-const {TOKEN} = require ('./../config');
+const {API_TOKEN} = require ('./../config');
+
 
 //Define Middleware for authentification checks
 function validateKey(req, res, next){
@@ -11,7 +12,7 @@ function validateKey(req, res, next){
     }
 
     //Prevent further access if the API KEY provided doesn't match to the one on records
-    if(token !== `Bearer ${TOKEN}`){
+    if(token !== `Bearer ${API_TOKEN}`){
         res.statusMessage = "The API KEY you provided doesn't match to my records";
         return res.status(401).end();
     }

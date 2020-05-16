@@ -4,7 +4,7 @@ const API_TOKEN = '2abbf7c3-245b-404f-9473-ade729ed4653';
 
 function addBookmarkFetch(bmTitle, bmDescription, bmURL, bmRating)
 {
-    let url = 'api/bookmarks';
+    let url = 'bookMApp/bookmarks';
 
     let data = {
         title : bmTitle,
@@ -100,47 +100,47 @@ function showForm(sel){
 }
 
 
-// function loadBMSfetch(){
-//     let url = 'api/bookmarks';
-//     let settings = {
-//         method : 'GET',
-//         headers : {
-//             Authorization : `Bearer ${API_TOKEN}`,
-//             'Content-Type' : 'application/json'
-//         }
-//     }
+function loadBMSfetch(){
+    let url = 'api/bookmarks';
+    let settings = {
+        method : 'GET',
+        headers : {
+            Authorization : `Bearer ${API_TOKEN}`,
+            'Content-Type' : 'application/json'
+        }
+    }
 
-//     let receivedBMS = document.querySelector('#input_box');
+    let receivedBMS = document.querySelector('#input_box');
 
-//     fetch(url, settings)
-//         .then(response =>{
-//             if(response.ok){
-//                 return response.json();
-//             }
-//             throw new Error(response.statusText);
-//         })
-//         .then(responseJSON=>{
-//             receivedBMS.innerHTML = "";
-//             for(let i = 0; i < responseJSON.length; i++)
-//             {
-//                 receivedBMS.innerHTML += `<div> ${responseJSON[i].title} </div>`;
-//             }
-//         })
-//         .catch( err => {
-//             receivedBMS.innerHTML = `<div> ${err.message} </div>`;
-//         });
+    fetch(url, settings)
+        .then(response =>{
+            if(response.ok){
+                return response.json();
+            }
+            throw new Error(response.statusText);
+        })
+        .then(responseJSON=>{
+            receivedBMS.innerHTML = "";
+            for(let i = 0; i < responseJSON.length; i++)
+            {
+                receivedBMS.innerHTML += `<div> ${responseJSON[i].title} </div>`;
+            }
+        })
+        .catch( err => {
+            receivedBMS.innerHTML = `<div> ${err.message} </div>`;
+        });
 
-//     // input_box.innerHTML = "";
-//     // input_box.innerHTML +=`
-//     //         <h1>
-//     //         Bookmarks available in Database
-//     //         </h1>`
+    // input_box.innerHTML = "";
+    // input_box.innerHTML +=`
+    //         <h1>
+    //         Bookmarks available in Database
+    //         </h1>`
 
-//     console.log(url)
-//     console.log(settings)
+    console.log(url)
+    console.log(settings)
 
 
-// }
+}
 
 
 function init(){

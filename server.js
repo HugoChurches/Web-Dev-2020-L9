@@ -17,6 +17,7 @@ const {DATABASE_URL, PORT} = require('./config');
 //Adding a dependency for the validation token
 
 
+const API_TOKEN = '2abbf7c3-245b-404f-9473-ade729ed4653';
 
 //Require mongoose to be able to CONNECT to the database itself
 const mongoose = require ('mongoose');
