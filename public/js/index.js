@@ -43,7 +43,7 @@ function GetBookmarkFetch(bmTitle)
             }
         })
         .catch( err => {
-            let errorMsg = "Couldn't fetch bookmarks - Reason: "
+            let errorMsg = "Couldn't fetch bookmark - Error thrown is "
             errorMsg += err.message
             alert(errorMsg);
         });
@@ -80,7 +80,7 @@ function UpdateBookmarkFetch(bmID, bmTitle, bmDescription, bmURL, bmRating)
             throw new Error(response.statusText);
         })
         .catch( err => {
-            let errorMsg = "Couldn't update bookmark - Reason: "
+            let errorMsg = "Couldn't update bookmark - Error thrown is "
             errorMsg += err.message
             alert(errorMsg);
         });
@@ -91,6 +91,7 @@ function UpdateBookmarkFetch(bmID, bmTitle, bmDescription, bmURL, bmRating)
 function deleteBookmarkFetch(bmID)
 {
     let url = `/api/bookmarks/${bmID}`;
+    console.log(url);
 
     let settings = {
         method : 'DELETE',
@@ -107,7 +108,7 @@ function deleteBookmarkFetch(bmID)
             throw new Error(response.statusText);
         })
         .catch( err => {
-            let errorMsg = "Couldn't remove bookmark - Reason: "
+            let errorMsg = "Couldn't remove bookmark - Error thrown is "
             errorMsg += err.message
             alert(errorMsg);
         })
@@ -143,7 +144,7 @@ function addBookmarkFetch(bmTitle, bmDescription, bmURL, bmRating)
             throw new Error(response.statusText);
         })
         .catch( err => {
-            let errorMsg = "Couldn't add bookmark - Reason: "
+            let errorMsg = "Couldn't add bookmark - Error thrown is "
             errorMsg += err.message
             alert(errorMsg);
         });
@@ -309,7 +310,7 @@ function loadBMSfetch(){
             }
         })
         .catch( err => {
-            let errorMsg = "Couldn't fetch bookmarks - Reason: "
+            let errorMsg = "Couldn't fetch bookmark - Error thrown is "
             errorMsg += err.message
             alert(errorMsg);
         });
