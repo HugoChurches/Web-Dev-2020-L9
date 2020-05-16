@@ -215,6 +215,8 @@ bookMApp.get('/api/bookmark', jsonParser,(req, res)=>{
     let titleQuery = req.query.title;
     let idQuery = req.query.id;
 
+    console.log(titleQuery);
+
     //Verify that the user has actually inserted a value into the query, otherwise
     //send a 406, unaceptable request
     if(titleQuery === '' || idQuery === '')

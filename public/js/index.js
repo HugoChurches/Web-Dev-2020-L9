@@ -12,10 +12,12 @@ function GetBookmarkFetch(bmTitle)
         }
     }
 
+    console.log(url);
     let receivedBMS = document.querySelector('#input_box');
 
     fetch(url, settings)
         .then(response => {
+            console.log(response);
             if(response.ok)
             {
                 return response.json();
