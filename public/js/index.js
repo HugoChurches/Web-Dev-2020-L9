@@ -141,6 +141,7 @@ function addBookmarkFetch(bmTitle, bmDescription, bmURL, bmRating)
 }
 
 function showForm(sel){
+    loadBMSfetch();
     var sel = document.getElementById(sel);
     form_input.innerHTML = "";
     if(sel.value == "post_method")
