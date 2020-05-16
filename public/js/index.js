@@ -227,10 +227,15 @@ function loadBMSfetch(){
             receivedBMS.innerHTML = "";
             for(let i = 0; i < responseJSON.length; i++)
             {
+                receivedBMS.innerHTML += `<h2>Bookmark ID<h2>`
                 receivedBMS.innerHTML += `<div> ${responseJSON[i].id} </div>`;
+                receivedBMS.innerHTML += `<h2>Bookmark Title<h2>`
                 receivedBMS.innerHTML += `<div> ${responseJSON[i].title} </div>`;
+                receivedBMS.innerHTML += `<h2>Bookmark Description<h2>`
                 receivedBMS.innerHTML += `<div> ${responseJSON[i].description} </div>`;
+                receivedBMS.innerHTML += `<h2>Bookmark URL<h2>`
                 receivedBMS.innerHTML += `<div> ${responseJSON[i].url} </div>`;
+                receivedBMS.innerHTML += `<h2>Bookmark Rating<h2>`
                 receivedBMS.innerHTML += `<div> ${responseJSON[i].rating} </div>`;
             }
         })
