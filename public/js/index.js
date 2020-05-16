@@ -254,7 +254,6 @@ function showForm(sel){
         submitBoton.addEventListener('click', (event) =>{
             event.preventDefault();
             let bmTitle = bm_title.value;
-            GetBookmarkFetch(bmTitle);
         });
     }
 }
