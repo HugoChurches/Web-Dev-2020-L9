@@ -1,53 +1,17 @@
-import { response } from "express";
-
 const API_TOKEN = '2abbf7c3-245b-404f-9473-ade729ed4653';
 
 
 function GetBookmarkFetch(bmTitle)
 {
-    let url = '/bookmarks';
-
-    let settings = {
-        method : 'GET',
-        headers : {
-            Authorization : `Bearer ${API_TOKEN}`
-        }
-    }
-
-    let results = document.querySelector('.results')
-    results.innerHTML = "";
-
-    fetch(url, settings)
-        .then(response => {
-            if(response.ok){
-                return response.json();
-            }
-            throw new Error(response.statusText);
-        })
-        .then(responseJSON => {
-            for(let i = 0; i < responseJSON.length; i++)
-            {
-                results.innerHTML += `<h2>Bookmark ID<h2>`
-                results.innerHTML += `<div> ${responseJSON[i].id} </div>`;
-                results.innerHTML += `<h2>Bookmark Title<h2>`
-                results.innerHTML += `<div> ${responseJSON[i].title} </div>`;
-                results.innerHTML += `<h2>Bookmark Description<h2>`
-                results.innerHTML += `<div> ${responseJSON[i].description} </div>`;
-                results.innerHTML += `<h2>Bookmark URL<h2>`
-                results.innerHTML += `<div> ${responseJSON[i].url} </div>`;
-                results.innerHTML += `<h2>Bookmark Rating<h2>`
-                results.innerHTML += `<div> ${responseJSON[i].rating} </div>`;
-            }
-
-        })
-        .catch( err => {
-            results.innerHTML = `<div> ${err.message} </div>`;
-        });
+    console.log(bmTitle);
 }
 
+
+//Not working
 function UpdateBookmarkFetch(bmID, bmTitle, bmDescription, bmURL, bmRating)
 {
     let url = `/api/bookmarks/${bmID}`;
+
     let data = {
         title : bmTitle,
         description : bmDescription,
@@ -74,6 +38,7 @@ function UpdateBookmarkFetch(bmID, bmTitle, bmDescription, bmURL, bmRating)
         .catch( err => {
             results.innerHTML = `<div> ${err.message} </div>`;
         });
+
 }
 
 //DELETE OK!
@@ -254,6 +219,7 @@ function showForm(sel){
         submitBoton.addEventListener('click', (event) =>{
             event.preventDefault();
             let bmTitle = bm_title.value;
+            GetBookmarkFetch(bmTitle);
         });
     }
 }
