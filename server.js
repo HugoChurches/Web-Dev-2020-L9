@@ -28,9 +28,11 @@ const jsonParser = bodyParser.json();
 
 
 //Start dependencies
+
 const bookMApp = express();
 bookMApp.use(morgan('dev'));
 bookMApp.use(cors);
+bookMApp.use( express.static( "public" ) );
 
 //Define Middleware for authentification checks
 function validateKey(req, res, next){
