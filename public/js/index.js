@@ -3,7 +3,7 @@ const API_TOKEN = '2abbf7c3-245b-404f-9473-ade729ed4653';
 
 function GetBookmarkFetch(bmTitle)
 {
-    let url = `/bookmark?title=${bmTitle}`;
+    let url = `api/bookmark?title=${bmTitle}`;
 
     let settings = {
         method : 'GET',
