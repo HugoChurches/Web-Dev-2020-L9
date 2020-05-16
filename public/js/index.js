@@ -155,7 +155,7 @@ function showForm(sel){
             </h1>
             <div class="space-y-1">
             <label>Bookmark Title</label><br>
-            <input class="rounded" class="class="rounded"" type="text" id=bm_title>
+            <input class="rounded" type="text" id=bm_title>
             </div>
             <div class="space-y-1">
             <label>Bookmark Description</label><br>
@@ -288,16 +288,16 @@ function loadBMSfetch(){
             receivedBMS.innerHTML = "";
             for(let i = 0; i < responseJSON.length; i++)
             {
-                receivedBMS.innerHTML += `<h2>Bookmark ID<h2>`
-                receivedBMS.innerHTML += `<div> ${responseJSON[i].id} </div>`;
-                receivedBMS.innerHTML += `<h2>Bookmark Title<h2>`
-                receivedBMS.innerHTML += `<div> ${responseJSON[i].title} </div>`;
-                receivedBMS.innerHTML += `<h2>Bookmark Description<h2>`
-                receivedBMS.innerHTML += `<div> ${responseJSON[i].description} </div>`;
-                receivedBMS.innerHTML += `<h2>Bookmark URL<h2>`
-                receivedBMS.innerHTML += `<div> ${responseJSON[i].url} </div>`;
-                receivedBMS.innerHTML += `<h2>Bookmark Rating<h2>`
-                receivedBMS.innerHTML += `<div> ${responseJSON[i].rating} </div>`;
+                receivedBMS.innerHTML += `<h2 class="font-bold">Bookmark ID</h2>`
+                receivedBMS.innerHTML += `<div class="text-green-800"> ${responseJSON[i].id} </div>`;
+                receivedBMS.innerHTML += `<h2 class="font-bold">Bookmark Title</h2>`
+                receivedBMS.innerHTML += `<div class="text-green-800"> ${responseJSON[i].title} </div>`;
+                receivedBMS.innerHTML += `<h2 class="font-bold">Bookmark Description</h2>`
+                receivedBMS.innerHTML += `<div class="text-green-800"> ${responseJSON[i].description} </div>`;
+                receivedBMS.innerHTML += `<h2 class="font-bold">Bookmark URL</h2>`
+                receivedBMS.innerHTML += `<div class="text-green-800"> ${responseJSON[i].url} </div>`;
+                receivedBMS.innerHTML += `<h2 class="font-bold">Bookmark Rating</h2>`
+                receivedBMS.innerHTML += `<div class="text-green-800"> ${responseJSON[i].rating} </div>`;
             }
         })
         .catch( err => {
