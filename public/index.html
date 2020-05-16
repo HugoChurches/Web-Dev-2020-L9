@@ -7,7 +7,7 @@
     <link href="style.css" rel="stylesheet" type="text/css" />
   </head>
   <body>
-    <div class="w-full h-screen bg-gray-300 pt-32">
+    <div class="w-full h-screen bg-gray-300 pt-15">
         <div class="flex flex-col items-center mb-16 ">
             <h1 class="text-gray-800 text-2xl">Welcome</h1>
             <p class="text-gray-800 ">This is a Bookmark lookup weblet!</p>
@@ -18,25 +18,21 @@
             </div>
         </div>
 
-        <div class="flex justify-center pt-20">
+        <div class="flex justify-center pt-10">
 
-        <select class="rounded" name="type-of-request" id="reqid" onchange="showForm(this.id)">
+        <select class="rounded h-screen" name="type-of-request" id="reqid" onchange="showForm(this.id)">
           <option selected="true" disabled="true">Choose...</option>    
           <option value="post_method">Post</option>
           <option value="delete_method">Delete</option>
           <option value="update_method">Update</option>
           <option value="get_method">Get</option>
-          
         </select>
-        
-
       </div>
       
       <span class="flex flex-col content-between items-center pt-10" id="form_input">
       </span>
 
       <div class="results">
-
       </div>
     </div>
     <script src="./js/index.js"></script>
