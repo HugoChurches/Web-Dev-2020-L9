@@ -3,8 +3,7 @@ const API_TOKEN = '2abbf7c3-245b-404f-9473-ade729ed4653';
 
 function GetBookmarkFetch(bmTitle)
 {
-    //console.log(bmTitle);
-    let url = '/bookmarks';
+    let url = `/bookmark?title=${bmTitle}`;
 
     let settings = {
         method : 'GET',
@@ -12,6 +11,8 @@ function GetBookmarkFetch(bmTitle)
             Authorization : `Bearer ${API_TOKEN}`
         }
     }
+
+    let receivedBMS = document.querySelector('#input_box');
 
     fetch(url, settings)
         .then(response => {
@@ -23,7 +24,25 @@ function GetBookmarkFetch(bmTitle)
         })
         .then(responseJSON => {
             console.log(responseJSON);
+            receivedBMS.innerHTML = "";
+            for(let i = 0; i < responseJSON.length; i++)
+            {
+                receivedBMS.innerHTML += `<h2>Found Bookmark<h2>`
+                receivedBMS.innerHTML += `<h2>Bookmark ID<h2>`
+                receivedBMS.innerHTML += `<div> ${responseJSON[i].id} </div>`;
+                receivedBMS.innerHTML += `<h2>Bookmark Title<h2>`
+                receivedBMS.innerHTML += `<div> ${responseJSON[i].title} </div>`;
+                receivedBMS.innerHTML += `<h2>Bookmark Description<h2>`
+                receivedBMS.innerHTML += `<div> ${responseJSON[i].description} </div>`;
+                receivedBMS.innerHTML += `<h2>Bookmark URL<h2>`
+                receivedBMS.innerHTML += `<div> ${responseJSON[i].url} </div>`;
+                receivedBMS.innerHTML += `<h2>Bookmark Rating<h2>`
+                receivedBMS.innerHTML += `<div> ${responseJSON[i].rating} </div>`;
+            }
         })
+        .catch( err => {
+            receivedBMS.innerHTML = `<div> ${err.message} </div>`;
+        });
 
 }
 
@@ -233,7 +252,7 @@ function showForm(sel){
             <label>Bookmark Title</label><br>
             <input class="rounded" class="class="rounded"" type="text" id=bm_title>
             </div>
-            <button class="submit-button-bookmark bg-gray-700 text-white rounded p-3" type="submit">Delete this bookmark</button>
+            <button class="submit-button-bookmark bg-gray-700 text-white rounded p-3" type="submit">Find bookmark</button>
         </form>  
         `
         let submitBoton = document.querySelector('.submit-button-bookmark');
