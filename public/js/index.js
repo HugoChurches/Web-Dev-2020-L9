@@ -43,7 +43,9 @@ function GetBookmarkFetch(bmTitle)
             }
         })
         .catch( err => {
-            receivedBMS.innerHTML = `<div> ${err.message} </div>`;
+            let errorMsg = "Couldn't fetch bookmarks - Reason: "
+            errorMsg += err.message
+            alert(errorMsg);
         });
 
 }
@@ -78,7 +80,9 @@ function UpdateBookmarkFetch(bmID, bmTitle, bmDescription, bmURL, bmRating)
             throw new Error(response.statusText);
         })
         .catch( err => {
-            results.innerHTML = `<div> ${err.message} </div>`;
+            let errorMsg = "Couldn't update bookmark - Reason: "
+            errorMsg += err.message
+            alert(errorMsg);
         });
 
 }
@@ -103,7 +107,9 @@ function deleteBookmarkFetch(bmID)
             throw new Error(response.statusText);
         })
         .catch( err => {
-            results.innerHTML = `<div> ${err.message} </div>`;
+            let errorMsg = "Couldn't remove bookmark - Reason: "
+            errorMsg += err.message
+            alert(errorMsg);
         })
 }
 
@@ -137,7 +143,9 @@ function addBookmarkFetch(bmTitle, bmDescription, bmURL, bmRating)
             throw new Error(response.statusText);
         })
         .catch( err => {
-            results.innerHTML = `<div> ${err.message} </div>`;
+            let errorMsg = "Couldn't add bookmark - Reason: "
+            errorMsg += err.message
+            alert(errorMsg);
         });
 
 }
@@ -301,7 +309,9 @@ function loadBMSfetch(){
             }
         })
         .catch( err => {
-            receivedBMS.innerHTML = `<div> ${err.message} </div>`;
+            let errorMsg = "Couldn't fetch bookmarks - Reason: "
+            errorMsg += err.message
+            alert(errorMsg);
         });
 }
 
