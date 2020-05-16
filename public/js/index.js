@@ -1,7 +1,7 @@
 const API_TOKEN = '2abbf7c3-245b-404f-9473-ade729ed4653';
 
-
-function UpdateBookmarkFetch(bmTitle, bmDescription, bmURL, bmRating)
+//Not working
+function UpdateBookmarkFetch(bmID, bmTitle, bmDescription, bmURL, bmRating)
 {
     let url = `/api/bookmarks/${bmID}`;
 
@@ -24,12 +24,9 @@ function UpdateBookmarkFetch(bmTitle, bmDescription, bmURL, bmRating)
     fetch(url, settings)
         .then(response =>{
             if(response.ok){
-                return response.json();
+                loadBMSfetch();
             }
             throw new Error(response.statusText);
-        })
-        .then(responseJSON => {
-            loadBMSfetch();
         })
         .catch( err => {
             results.innerHTML = `<div> ${err.message} </div>`;
@@ -37,7 +34,7 @@ function UpdateBookmarkFetch(bmTitle, bmDescription, bmURL, bmRating)
 
 }
 
-
+//DELETE OK!
 function deleteBookmarkFetch(bmID)
 {
     let url = `/api/bookmarks/${bmID}`;
@@ -52,7 +49,7 @@ function deleteBookmarkFetch(bmID)
     fetch(url, settings)
         .then(response =>{
             if(response.ok){
-                return loadBMSfetch();
+                loadBMSfetch();
             }
             throw new Error(response.statusText);
         })
@@ -60,8 +57,6 @@ function deleteBookmarkFetch(bmID)
             results.innerHTML = `<div> ${err.message} </div>`;
         })
 }
-
-
 
 
 //I'm skipping comments because I'm running out of time
@@ -88,12 +83,9 @@ function addBookmarkFetch(bmTitle, bmDescription, bmURL, bmRating)
     fetch(url, settings)
         .then(response =>{
             if(response.ok){
-                return response.json();
+                loadBMSfetch();
             }
             throw new Error(response.statusText);
-        })
-        .then(responseJSON => {
-            console.log("OK, response received");
         })
         .catch( err => {
             results.innerHTML = `<div> ${err.message} </div>`;
@@ -127,7 +119,7 @@ function showForm(sel){
             <label>Bookmark Rating</label><br>
             <input class="rounded" type="text" id=bm_rating>
             </div>
-            <button class="submit-button-bookmark bg-gray-700 text-white rounded p-3" type="submit">Get bookmarks</button>
+            <button class="submit-button-bookmark bg-gray-700 text-white rounded p-3" type="submit">Post bookmark</button>
         </form>  
         `
             let submitBoton = document.querySelector('.submit-button-bookmark');
@@ -194,7 +186,7 @@ function showForm(sel){
             let bmDescription = bm_description.value;
             let bmURL = bm_url.value;
             let bmRating = bm_rating.value;
-            UpdateBookmarkFetch(bmTitle, bmDescription, bmURL, bmRating);
+            UpdateBookmarkFetch(bmID, bmTitle, bmDescription, bmURL, bmRating);
         });
     }
     else if(sel.value == "get_method")
