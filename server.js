@@ -57,7 +57,7 @@ bookMApp.use(validateKey);
 
 //Endpoint for /bookmarks PATCH
 //Added interaction of patching an existing bookmark
-bookMApp.patch('/bookmark/:id', jsonParser, (req, res) =>{
+bookMApp.patch('/api/bookmark/:id', jsonParser, (req, res) =>{
     
     let JSONdata = ('body', req.body);
 
@@ -120,7 +120,7 @@ bookMApp.patch('/bookmark/:id', jsonParser, (req, res) =>{
 
 //Endpoint for /bookmarks delete
 //Added interaction of deleting a bookmark using Models OK!
-bookMApp.delete('/bookmarks/:id', (req, res) =>{
+bookMApp.delete('/api/bookmarks/:id', (req, res) =>{
     //Get the id sent by Postman
     let idObj = {
         //Build an object for the .find function
@@ -155,7 +155,7 @@ bookMApp.delete('/bookmarks/:id', (req, res) =>{
 //Endpoint for /bookmarks POST
 //Remember to parse the body with jsonParser otherwise it will look wrong
 //Added interaction of posting a bookmark using Models OK!
-bookMApp.post('/bookmarks', jsonParser, (req, res) =>{
+bookMApp.post('/api/bookmarks', jsonParser, (req, res) =>{
     //Give the JSON body to a variable, keep this as it will be used to give the parameters
     //to the database schema
     let JSONdata = ('body', req.body);
@@ -208,7 +208,7 @@ bookMApp.post('/bookmarks', jsonParser, (req, res) =>{
 
 //Endpoint for /bookmark?title=value GET query 
 //Added interaction of getting a bookmark using Models OK!
-bookMApp.get('/bookmark', jsonParser,(req, res)=>{
+bookMApp.get('/api/bookmark', jsonParser,(req, res)=>{
     //Assign the title's query name to variable
     let titleQuery = req.query.title;
     let idQuery = req.query.id;
@@ -258,7 +258,7 @@ bookMApp.get('/bookmark', jsonParser,(req, res)=>{
 
 //Endpoint to return all bookmarks available GET
 //Added interaction of getting all bookmarks using Models OK!
-bookMApp.get('/bookmarks',(req, res)=>{
+bookMApp.get('/api/bookmarks',(req, res)=>{
     //Summon the specific function by calling its name
     Bookmarks
         .getAllBookmarks()

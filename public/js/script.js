@@ -4,7 +4,7 @@ const API_TOKEN = '2abbf7c3-245b-404f-9473-ade729ed4653';
 
 function addBookmarkFetch(bmTitle, bmDescription, bmURL, bmRating)
 {
-    let url = 'bookMApp/bookmarks';
+    let url = '/api/bookmarks';
 
     let data = {
         title : bmTitle,
@@ -12,15 +12,13 @@ function addBookmarkFetch(bmTitle, bmDescription, bmURL, bmRating)
         url : bmURL,
         rating : bmRating
     }
-
-    console.log(data)
     let settings = {
         method : 'POST',
         headers : {
             Authorization : `Bearer ${API_TOKEN}`,
             'Content-Type' : 'application/json'
         },
-        body : JSON.stringify(data)
+        body : JSON.stringify( data )
     }
 
     let results = document.querySelector('.results')
@@ -101,7 +99,7 @@ function showForm(sel){
 
 
 function loadBMSfetch(){
-    let url = 'api/bookmarks';
+    let url = '/api/bookmarks';
     let settings = {
         method : 'GET',
         headers : {
