@@ -3,7 +3,28 @@ const API_TOKEN = '2abbf7c3-245b-404f-9473-ade729ed4653';
 
 function GetBookmarkFetch(bmTitle)
 {
-    console.log(bmTitle);
+    //console.log(bmTitle);
+    let url = '/bookmarks';
+
+    let settings = {
+        method : 'GET',
+        headers : {
+            Authorization : `Bearer ${API_TOKEN}`
+        }
+    }
+
+    fetch(url, settings)
+        .then(response => {
+            if(response.ok)
+            {
+                return response.json();
+            }
+            throw new Error(response.statusText);
+        })
+        .then(responseJSON => {
+            console.log(responseJSON);
+        })
+
 }
 
 
