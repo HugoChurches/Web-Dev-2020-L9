@@ -91,7 +91,6 @@ function UpdateBookmarkFetch(bmID, bmTitle, bmDescription, bmURL, bmRating)
 function deleteBookmarkFetch(bmID)
 {
     let url = `/api/bookmarks/${bmID}`;
-    console.log(url);
 
     let settings = {
         method : 'DELETE',
@@ -108,7 +107,7 @@ function deleteBookmarkFetch(bmID)
             throw new Error(response.statusText);
         })
         .catch( err => {
-            let errorMsg = "Couldn't remove bookmark - Error thrown is "
+            let errorMsg = "The server says... "
             errorMsg += err.message
             alert(errorMsg);
         })
